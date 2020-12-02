@@ -8,6 +8,7 @@ from retrain_model.decoder import Decoder
 from retrain_model.new_model import get_default_arch, newModel
 
 
+
 class Retrain_Autodeeplab(nn.Module):
     def __init__(self, args):
         super(Retrain_Autodeeplab, self).__init__()
@@ -17,10 +18,14 @@ class Retrain_Autodeeplab(nn.Module):
             print("=> use ABN!")
         if args.net_arch is not None and args.cell_arch is not None:
             net_arch, cell_arch = np.load(args.net_arch), np.load(args.cell_arch)
+            #add path to network_path
+            network_path = np.load('run/cityscapes/pippo/experiment_0/network_path_space.npy')
+            network_arch = net_arch
+
         else:
             network_arch, cell_arch, network_path = get_default_arch()
         self.encoder = newModel(network_arch, cell_arch, args.num_classes, 12, args.filter_multiplier, BatchNorm=BatchNorm2d, args=args)
-        self.aspp = ASPP(args.filter_multiplier * args.block_multiplier * filter_param_dict[network_path[-1]],
+        self.aspp = ASPP(args.filter_multiplier * args.block_multiplier * filter_param_dict[net_arch[-1]],
                          256, args.num_classes, conv=nn.Conv2d, norm=BatchNorm2d)
         self.decoder = Decoder(args.num_classes, filter_multiplier=args.filter_multiplier * args.block_multiplier,
                                args=args, last_level=network_path[-1])

@@ -9,10 +9,21 @@ from utils.metrics import Evaluator
 from utils.lr_scheduler import LR_Scheduler
 from utils.loss import SegmentationLosses
 from dataloaders import make_data_loader
+from collections import OrderedDict
+from utils.copy_state_dict import copy_state_dict
+from utils.saver import Saver
 
 class ArchitectureSearcher(object):
     def __init__(self, args):
         self.args = args
+
+        #Define Saver
+        self.saver = Saver(args)
+        #call saver function in which it is created a file
+        #where informations train (like dataset,epoch..) are saved
+        self.saver.save_experiment_config()
+
+
         kwargs = {'num_workers': args.workers, 'pin_memory': True, 'drop_last':True}
         self.train_loaderA, self.train_loaderB, self.val_loader, self.test_loader, self.nclass = make_data_loader(args, **kwargs)
 
@@ -48,25 +59,30 @@ class ArchitectureSearcher(object):
 
 
         self.best_pred = 0.0
+        if args.resume is not None:
+            if not os.path.isfile(args.resume):
+                raise RuntimeError("=> no checkpoint found at '{}'".format(args.resume))
+            checkpoint = torch.load(args.resume)
+            args.start_epoch = checkpoint['epoch']
 
+            if args.clean_module:
+                self.model.load_state_dict(checkpoint['state_dict'])
+                state_dict = checkpoint['state_dict']
+                new_state_dict = OrderedDict()
+                for k, v in state_dict.items():
+                    name = k[7:]  # remove 'module.' of dataparallel
+                    new_state_dict[name] = v
+                # self.model.load_state_dict(new_state_dict)
+                copy_state_dict(self.model.state_dict(), new_state_dict)
+
+        if args.resume is not None:
+            self.best_pred = checkpoint['best_pred']
+            print("=> loaded checkpoint '{}' (epoch {})"
+                  .format(args.resume, checkpoint['epoch']))
 
         # Clear start epoch if fine-tuning
         if args.ft:
             args.start_epoch = 0
-
-
-    # helper function for data visualization
-    def visualize(**images):
-        """PLot images in one row."""
-        n = len(images)
-        plt.figure(figsize=(32, 10))
-        for i, (name, image) in enumerate(images.items()):
-            plt.subplot(1, n, i + 1)
-            plt.xticks([])
-            plt.yticks([])
-            plt.title(' '.join(name.split('_')).title())
-            plt.imshow(image)
-        plt.show()
 
     def training(self, epoch):
         train_loss = 0.0
@@ -76,6 +92,7 @@ class ArchitectureSearcher(object):
         for i, sample in enumerate(tbar):
             image, target = sample['image'], sample['label']
             image, target = image.cuda(), target.cuda()
+
 
             #plt.imshow(image[0].permute(2,1,0))
             #plt.show()
@@ -122,42 +139,50 @@ class ArchitectureSearcher(object):
             print('[Epoch: %d, numImages: %5d]' % (epoch, i * self.args.batch_size + image.data.shape[0]))
             print('Loss: %.3f' % train_loss)
 
-        def validation(self, epoch):
-            self.model.eval()
-            self.evaluator.reset()
-            tbar = tqdm(self.val_loader, desc='\r')
-            test_loss = 0.0
+    def validation(self, epoch):
+        self.model.eval()
+        self.evaluator.reset()
+        tbar = tqdm(self.val_loader, desc='\r')
+        test_loss = 0.0
 
-            for i, sample in enumerate(tbar):
-                image, target = sample['image'], sample['label']
-                image, target = image.cuda(), target.cuda()
-                with torch.no_grad():
-                    output = self.model(image)
-                loss = self.criterion(output, target)
-                test_loss += loss.item()
-                tbar.set_description('Test loss: %.3f' % (test_loss / (i + 1)))
-                pred = output.data.cpu().numpy()
-                target = target.cpu().numpy()
-                pred = np.argmax(pred, axis=1)
-                # Add batch sample into evaluator
-                self.evaluator.add_batch(target, pred)
+        for i, sample in enumerate(tbar):
+            image, target = sample['image'], sample['label']
+            image, target = image.cuda(), target.cuda()
 
-            # Fast test during the training
-            Acc = self.evaluator.Pixel_Accuracy()
-            Acc_class = self.evaluator.Pixel_Accuracy_Class()
-            mIoU = self.evaluator.Mean_Intersection_over_Union()
-            FWIoU = self.evaluator.Frequency_Weighted_Intersection_over_Union()
+            with torch.no_grad():
+                output = self.model(image)
+            loss = self.criterion(output, target)
+            test_loss += loss.item()
+            tbar.set_description('Test loss: %.3f' % (test_loss / (i + 1)))
+            pred = output.data.cpu().numpy()
+            target = target.cpu().numpy()
+            pred = np.argmax(pred, axis=1)
+            # Add batch sample into evaluator
+            self.evaluator.add_batch(target, pred)
 
-            print('Validation:')
-            print('[Epoch: %d, numImages: %5d]' % (epoch, i * self.args.batch_size + image.data.shape[0]))
-            print("Acc:{}, Acc_class:{}, mIoU:{}, fwIoU: {}".format(Acc, Acc_class, mIoU, FWIoU))
-            print('Loss: %.3f' % test_loss)
-            new_pred = mIoU
-            if new_pred > self.best_pred:
-                is_best = True
-                self.best_pred = new_pred
+        # Fast test during the training
+        Acc = self.evaluator.Pixel_Accuracy()
+        Acc_class = self.evaluator.Pixel_Accuracy_Class()
+        mIoU = self.evaluator.Mean_Intersection_over_Union()
+        FWIoU = self.evaluator.Frequency_Weighted_Intersection_over_Union()
 
-                state_dict = self.model.state_dict()
-                
+        print('Validation:')
+        print('[Epoch: %d, numImages: %5d]' % (epoch, i * self.args.batch_size + image.data.shape[0]))
+        print("Acc:{}, Acc_class:{}, mIoU:{}, fwIoU: {}".format(Acc, Acc_class, mIoU, FWIoU))
+        print('Loss: %.3f' % test_loss)
+        new_pred = mIoU
+        if new_pred > self.best_pred:
+            is_best = True
+            self.best_pred = new_pred
+
+            #state.dict() let to save, update, alter and restore Pytorch model and optimazer
+            state_dict = self.model.state_dict()
+            #save checkpoint to disk, in this Saver method model_best.pth is created
+            self.saver.save_checkpoint({
+                'epoch': epoch + 1,
+                'state_dict': state_dict,
+                'optimizer': self.optimizer.state_dict(),
+                'best_pred': self.best_pred,
+            }, is_best)
 
 

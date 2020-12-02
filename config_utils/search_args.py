@@ -11,7 +11,7 @@ def obtain_search_args():
                         help='opt level for half percision training (default: O0)')
     parser.add_argument('--out-stride', type=int, default=16,
                         help='network output stride (default: 8)')
-    parser.add_argument('--dataset', type=str, default='pascal',
+    parser.add_argument('--dataset', type=str, default='cityscapes',
                         choices=['pascal', 'coco', 'cityscapes', 'kd'],
                         help='dataset name (default: pascal)')
     parser.add_argument('--autodeeplab', type=str, default='search',
@@ -20,7 +20,7 @@ def obtain_search_args():
                         help='whether to use SBD dataset (default: True)')
     parser.add_argument('--load-parallel', type=int, default=0)
     parser.add_argument('--clean-module', type=int, default=0)
-    parser.add_argument('--workers', type=int, default=0,
+    parser.add_argument('--workers', type=int, default=12,
                         metavar='N', help='dataloader threads')
     parser.add_argument('--base_size', type=int, default=128,
                         help='base image size')
@@ -40,12 +40,12 @@ def obtain_search_args():
                         help='number of epochs to train (default: auto)')
     parser.add_argument('--start_epoch', type=int, default=0,
                         metavar='N', help='start epochs (default:0)')
-    parser.add_argument('--filter_multiplier', type=int, default=6)
+    parser.add_argument('--filter_multiplier', type=int, default=4)
     parser.add_argument('--block_multiplier', type=int, default=5)
     parser.add_argument('--step', type=int, default=5)
     parser.add_argument('--alpha_epoch', type=int, default=20,
                         metavar='N', help='epoch to start training alphas')
-    parser.add_argument('--batch-size', type=int, default=2,
+    parser.add_argument('--batch-size', type=int, default=4,
                         metavar='N', help='input batch size for \
                                 training (default: auto)')
     parser.add_argument('--test-batch-size', type=int, default=None,
@@ -83,9 +83,9 @@ def obtain_search_args():
     parser.add_argument('--seed', type=int, default=1, metavar='S',
                         help='random seed (default: 1)')
     # checking point
-    parser.add_argument('--resume', type=str, default=None,
+    parser.add_argument('--resume', type=str, default= None,
                         help='put the path to resuming file if needed')
-    parser.add_argument('--checkname', type=str, default=None,
+    parser.add_argument('--checkname', type=str, default='checkname',
                         help='set the checkpoint name')
     # finetuning pre-trained models
     parser.add_argument('--ft', action='store_true', default=False,

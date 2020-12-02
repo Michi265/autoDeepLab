@@ -234,6 +234,7 @@ class AutoDeeplab(nn.Module):
                                                                None,
                                                                normalized_alphas)
                 count += 1
+                #prova a mettere 1 nell'ultima parentesi quadra
                 level8_new = normalized_betas[layer][0][2] * level8_new_1 + normalized_betas[layer][1][2] * level8_new_2
 
                 level16_new, = self.cells[count](None,

@@ -1,24 +1,24 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as functional
-
+from queue import Queue
+'''
 try:
     from queue import Queue
+
 except ImportError:
     from Queue import Queue
-
+'''
 from .functions import *
 
 
 class ABN(nn.Module):
     """Activated Batch Normalization
-
     This gathers a `BatchNorm2d` and an activation function in a single module
     """
 
     def __init__(self, num_features, eps=1e-5, momentum=0.1, affine=True, activation="leaky_relu", slope=0.01):
         """Creates an Activated Batch Normalization module
-
         Parameters
         ----------
         num_features : int
@@ -86,7 +86,6 @@ class InPlaceABN(ABN):
 
     def __init__(self, num_features, eps=1e-5, momentum=0.1, affine=True, activation="leaky_relu", slope=0.01):
         """Creates an InPlace Activated Batch Normalization module
-
         Parameters
         ----------
         num_features : int
@@ -126,5 +125,3 @@ class InPlaceABNSync(ABN):
         else:
             rep += ')'
         return rep.format(name=self.__class__.__name__, **self.__dict__)
-
-

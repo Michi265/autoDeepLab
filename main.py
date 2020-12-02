@@ -22,7 +22,7 @@ def main():
 
     if args.epochs is None:
         epoches = {
-            'pascal': 10,
+            'cityscapes': 6,
         }
         args.epochs = epoches[args.dataset.lower()]
 
