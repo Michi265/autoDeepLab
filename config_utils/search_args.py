@@ -22,9 +22,9 @@ def obtain_search_args():
     parser.add_argument('--clean-module', type=int, default=0)
     parser.add_argument('--workers', type=int, default=12,
                         metavar='N', help='dataloader threads')
-    parser.add_argument('--base_size', type=int, default=128,
+    parser.add_argument('--base_size', type=int, default=320,
                         help='base image size')
-    parser.add_argument('--crop_size', type=int, default=128,
+    parser.add_argument('--crop_size', type=int, default=321,
                         help='crop image size')
     parser.add_argument('--resize', type=int, default=256,
                         help='resize image size')
@@ -45,7 +45,7 @@ def obtain_search_args():
     parser.add_argument('--step', type=int, default=5)
     parser.add_argument('--alpha_epoch', type=int, default=20,
                         metavar='N', help='epoch to start training alphas')
-    parser.add_argument('--batch-size', type=int, default=4,
+    parser.add_argument('--batch-size', type=int, default=2,
                         metavar='N', help='input batch size for \
                                 training (default: auto)')
     parser.add_argument('--test-batch-size', type=int, default=None,

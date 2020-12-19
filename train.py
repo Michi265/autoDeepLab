@@ -23,6 +23,7 @@ def main():
     assert torch.cuda.is_available()
     torch.backends.cudnn.benchmark = True
     args = obtain_retrain_autodeeplab_args()
+    print(args.exp)
     model_fname = 'data/deeplab_{0}_{1}_v3_{2}_epoch%d.pth'.format(args.backbone, args.dataset, args.exp)
     print(model_fname)
     if args.dataset == 'pascal':
@@ -87,8 +88,8 @@ def main():
             optimizer.step()
             optimizer.zero_grad()
 
-            print('epoch: {0}\t''iter: {1}/{2}\t''lr: {3:.6f}\t''loss: {loss.val:.4f} ({loss.ema:.4f})'.format(
-                epoch + 1, i + 1, len(dataset_loader), scheduler.get_lr(optimizer), loss=losses))
+        print('epoch: {0}\t''iter: {1}/{2}\t''lr: {3:.6f}\t''loss: {loss.val:.4f} ({loss.ema:.4f})'.format(
+            epoch + 1, i + 1, len(dataset_loader), scheduler.get_lr(optimizer), loss=losses))
         if epoch < args.epochs - 50:
             if epoch % 50 == 0:
                 torch.save({

@@ -13,6 +13,7 @@ def checkCuda_isAvailable():
 
 
 def main():
+    print(torch.__version__)
 
     if not checkCuda_isAvailable():
         return

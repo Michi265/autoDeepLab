@@ -1,0 +1,441 @@
+IoU road: 0.00
+IoU sidewalk: 0.00
+IoU building: 0.59
+IoU wall: 0.14
+IoU fence: 0.00
+IoU pole: 1.31
+IoU traffic light: 0.38
+IoU traffic sign: 0.36
+IoU vegetation: 0.09
+IoU terrain: 0.00
+IoU sky: 1.27
+IoU person: 0.00
+IoU rider: 0.00
+IoU car: 0.00
+IoU truck: 0.19
+IoU bus: 0.03
+IoU train: 0.02
+IoU motorcycle: 0.00
+IoU bicycle: 0.00
+
+epoch: 0 Mean IoU: 0.23
+IoU road: 0.00
+IoU sidewalk: 0.00
+IoU building: 0.65
+IoU wall: 0.18
+IoU fence: 0.00
+IoU pole: 0.99
+IoU traffic light: 0.53
+IoU traffic sign: 1.16
+IoU vegetation: 5.87
+IoU terrain: 0.00
+IoU sky: 2.61
+IoU person: 0.00
+IoU rider: 0.00
+IoU car: 0.17
+IoU truck: 0.11
+IoU bus: 0.09
+IoU train: 0.04
+IoU motorcycle: 0.00
+IoU bicycle: 0.00
+
+epoch: 0 Mean IoU: 0.65
+IoU road: 0.00
+IoU sidewalk: 0.00
+IoU building: 0.66
+IoU wall: 0.18
+IoU fence: 0.00
+IoU pole: 0.86
+IoU traffic light: 0.50
+IoU traffic sign: 1.08
+IoU vegetation: 5.96
+IoU terrain: 0.00
+IoU sky: 2.56
+IoU person: 0.00
+IoU rider: 0.00
+IoU car: 0.11
+IoU truck: 0.09
+IoU bus: 0.27
+IoU train: 0.03
+IoU motorcycle: 0.00
+IoU bicycle: 0.00
+
+epoch: 1 Mean IoU: 0.65
+IoU road: 0.00
+IoU sidewalk: 0.00
+IoU building: 0.65
+IoU wall: 0.22
+IoU fence: 0.01
+IoU pole: 0.93
+IoU traffic light: 0.29
+IoU traffic sign: 1.15
+IoU vegetation: 5.72
+IoU terrain: 0.00
+IoU sky: 2.83
+IoU person: 0.00
+IoU rider: 0.00
+IoU car: 0.14
+IoU truck: 0.11
+IoU bus: 0.10
+IoU train: 0.00
+IoU motorcycle: 0.00
+IoU bicycle: 0.00
+
+epoch: 2 Mean IoU: 0.64
+IoU road: 0.00
+IoU sidewalk: 0.00
+IoU building: 0.64
+IoU wall: 0.25
+IoU fence: 0.00
+IoU pole: 0.82
+IoU traffic light: 0.31
+IoU traffic sign: 1.07
+IoU vegetation: 5.97
+IoU terrain: 0.00
+IoU sky: 2.74
+IoU person: 0.00
+IoU rider: 0.00
+IoU car: 0.19
+IoU truck: 0.13
+IoU bus: 0.08
+IoU train: 0.05
+IoU motorcycle: 0.00
+IoU bicycle: 0.00
+
+epoch: 3 Mean IoU: 0.64
+IoU road: 0.00
+IoU sidewalk: 0.00
+IoU building: 0.69
+IoU wall: 0.07
+IoU fence: 0.00
+IoU pole: 0.86
+IoU traffic light: 0.34
+IoU traffic sign: 1.16
+IoU vegetation: 5.98
+IoU terrain: 0.00
+IoU sky: 2.62
+IoU person: 0.00
+IoU rider: 0.00
+IoU car: 0.12
+IoU truck: 0.17
+IoU bus: 0.29
+IoU train: 0.01
+IoU motorcycle: 0.00
+IoU bicycle: 0.00
+
+epoch: 4 Mean IoU: 0.65
+IoU road: 0.00
+IoU sidewalk: 0.00
+IoU building: 0.65
+IoU wall: 0.11
+IoU fence: 0.01
+IoU pole: 0.98
+IoU traffic light: 0.37
+IoU traffic sign: 1.12
+IoU vegetation: 5.90
+IoU terrain: 0.00
+IoU sky: 2.61
+IoU person: 0.00
+IoU rider: 0.00
+IoU car: 0.16
+IoU truck: 0.11
+IoU bus: 0.31
+IoU train: 0.02
+IoU motorcycle: 0.00
+IoU bicycle: 0.00
+
+epoch: 5 Mean IoU: 0.65
+IoU road: 0.00
+IoU sidewalk: 0.00
+IoU building: 0.69
+IoU wall: 0.11
+IoU fence: 0.00
+IoU pole: 0.89
+IoU traffic light: 0.39
+IoU traffic sign: 1.06
+IoU vegetation: 5.90
+IoU terrain: 0.00
+IoU sky: 2.79
+IoU person: 0.00
+IoU rider: 0.00
+IoU car: 0.22
+IoU truck: 0.10
+IoU bus: 0.21
+IoU train: 0.04
+IoU motorcycle: 0.00
+IoU bicycle: 0.00
+
+epoch: 6 Mean IoU: 0.65
+IoU road: 0.00
+IoU sidewalk: 0.00
+IoU building: 0.64
+IoU wall: 0.18
+IoU fence: 0.01
+IoU pole: 0.81
+IoU traffic light: 0.34
+IoU traffic sign: 1.14
+IoU vegetation: 5.85
+IoU terrain: 0.00
+IoU sky: 2.76
+IoU person: 0.00
+IoU rider: 0.00
+IoU car: 0.17
+IoU truck: 0.10
+IoU bus: 0.22
+IoU train: 0.01
+IoU motorcycle: 0.00
+IoU bicycle: 0.00
+
+epoch: 7 Mean IoU: 0.64
+IoU road: 0.00
+IoU sidewalk: 0.00
+IoU building: 0.69
+IoU wall: 0.22
+IoU fence: 0.00
+IoU pole: 0.85
+IoU traffic light: 0.43
+IoU traffic sign: 1.14
+IoU vegetation: 6.00
+IoU terrain: 0.00
+IoU sky: 2.66
+IoU person: 0.00
+IoU rider: 0.00
+IoU car: 0.12
+IoU truck: 0.09
+IoU bus: 0.15
+IoU train: 0.01
+IoU motorcycle: 0.00
+IoU bicycle: 0.00
+
+epoch: 8 Mean IoU: 0.65
+IoU road: 0.00
+IoU sidewalk: 0.00
+IoU building: 0.68
+IoU wall: 0.21
+IoU fence: 0.00
+IoU pole: 0.84
+IoU traffic light: 0.42
+IoU traffic sign: 1.18
+IoU vegetation: 5.86
+IoU terrain: 0.00
+IoU sky: 2.38
+IoU person: 0.00
+IoU rider: 0.00
+IoU car: 0.17
+IoU truck: 0.08
+IoU bus: 0.10
+IoU train: 0.03
+IoU motorcycle: 0.00
+IoU bicycle: 0.00
+
+epoch: 9 Mean IoU: 0.63
+IoU road: 0.00
+IoU sidewalk: 0.00
+IoU building: 0.69
+IoU wall: 0.16
+IoU fence: 0.04
+IoU pole: 1.03
+IoU traffic light: 0.50
+IoU traffic sign: 1.09
+IoU vegetation: 5.78
+IoU terrain: 0.00
+IoU sky: 2.72
+IoU person: 0.00
+IoU rider: 0.00
+IoU car: 0.15
+IoU truck: 0.15
+IoU bus: 0.13
+IoU train: 0.02
+IoU motorcycle: 0.00
+IoU bicycle: 0.00
+
+epoch: 10 Mean IoU: 0.65
+IoU road: 0.00
+IoU sidewalk: 0.00
+IoU building: 0.66
+IoU wall: 0.30
+IoU fence: 0.01
+IoU pole: 0.74
+IoU traffic light: 0.28
+IoU traffic sign: 1.16
+IoU vegetation: 6.00
+IoU terrain: 0.00
+IoU sky: 2.69
+IoU person: 0.00
+IoU rider: 0.00
+IoU car: 0.22
+IoU truck: 0.08
+IoU bus: 0.23
+IoU train: 0.06
+IoU motorcycle: 0.00
+IoU bicycle: 0.00
+
+epoch: 11 Mean IoU: 0.65
+IoU road: 0.00
+IoU sidewalk: 0.00
+IoU building: 0.71
+IoU wall: 0.17
+IoU fence: 0.03
+IoU pole: 0.97
+IoU traffic light: 0.38
+IoU traffic sign: 1.15
+IoU vegetation: 6.14
+IoU terrain: 0.00
+IoU sky: 2.70
+IoU person: 0.00
+IoU rider: 0.00
+IoU car: 0.18
+IoU truck: 0.16
+IoU bus: 0.31
+IoU train: 0.01
+IoU motorcycle: 0.00
+IoU bicycle: 0.00
+
+epoch: 12 Mean IoU: 0.68
+IoU road: 0.00
+IoU sidewalk: 0.00
+IoU building: 0.67
+IoU wall: 0.17
+IoU fence: 0.03
+IoU pole: 1.02
+IoU traffic light: 0.34
+IoU traffic sign: 1.09
+IoU vegetation: 5.93
+IoU terrain: 0.00
+IoU sky: 2.56
+IoU person: 0.00
+IoU rider: 0.00
+IoU car: 0.14
+IoU truck: 0.12
+IoU bus: 0.01
+IoU train: 0.01
+IoU motorcycle: 0.00
+IoU bicycle: 0.00
+
+epoch: 13 Mean IoU: 0.64
+IoU road: 0.00
+IoU sidewalk: 0.00
+IoU building: 0.64
+IoU wall: 0.38
+IoU fence: 0.02
+IoU pole: 0.89
+IoU traffic light: 0.29
+IoU traffic sign: 1.19
+IoU vegetation: 6.03
+IoU terrain: 0.00
+IoU sky: 2.61
+IoU person: 0.00
+IoU rider: 0.00
+IoU car: 0.14
+IoU truck: 0.15
+IoU bus: 0.01
+IoU train: 0.02
+IoU motorcycle: 0.00
+IoU bicycle: 0.00
+
+epoch: 14 Mean IoU: 0.65
+IoU road: 0.00
+IoU sidewalk: 0.00
+IoU building: 0.70
+IoU wall: 0.15
+IoU fence: 0.02
+IoU pole: 0.97
+IoU traffic light: 0.43
+IoU traffic sign: 1.07
+IoU vegetation: 5.80
+IoU terrain: 0.00
+IoU sky: 2.78
+IoU person: 0.00
+IoU rider: 0.00
+IoU car: 0.18
+IoU truck: 0.16
+IoU bus: 0.16
+IoU train: 0.02
+IoU motorcycle: 0.00
+IoU bicycle: 0.00
+
+epoch: 15 Mean IoU: 0.65
+IoU road: 0.00
+IoU sidewalk: 0.00
+IoU building: 0.65
+IoU wall: 0.27
+IoU fence: 0.00
+IoU pole: 0.79
+IoU traffic light: 0.34
+IoU traffic sign: 1.18
+IoU vegetation: 6.03
+IoU terrain: 0.00
+IoU sky: 2.58
+IoU person: 0.00
+IoU rider: 0.00
+IoU car: 0.13
+IoU truck: 0.09
+IoU bus: 0.18
+IoU train: 0.03
+IoU motorcycle: 0.00
+IoU bicycle: 0.00
+
+epoch: 16 Mean IoU: 0.65
+IoU road: 0.00
+IoU sidewalk: 0.00
+IoU building: 0.67
+IoU wall: 0.48
+IoU fence: 0.02
+IoU pole: 0.81
+IoU traffic light: 0.31
+IoU traffic sign: 0.96
+IoU vegetation: 6.02
+IoU terrain: 0.00
+IoU sky: 2.67
+IoU person: 0.00
+IoU rider: 0.00
+IoU car: 0.16
+IoU truck: 0.18
+IoU bus: 0.20
+IoU train: 0.06
+IoU motorcycle: 0.00
+IoU bicycle: 0.00
+
+epoch: 17 Mean IoU: 0.66
+IoU road: 0.00
+IoU sidewalk: 0.00
+IoU building: 0.67
+IoU wall: 0.19
+IoU fence: 0.00
+IoU pole: 0.82
+IoU traffic light: 0.59
+IoU traffic sign: 1.13
+IoU vegetation: 5.76
+IoU terrain: 0.00
+IoU sky: 2.58
+IoU person: 0.00
+IoU rider: 0.00
+IoU car: 0.15
+IoU truck: 0.07
+IoU bus: 0.25
+IoU train: 0.02
+IoU motorcycle: 0.00
+IoU bicycle: 0.00
+
+epoch: 18 Mean IoU: 0.64
+IoU road: 0.00
+IoU sidewalk: 0.00
+IoU building: 0.66
+IoU wall: 0.32
+IoU fence: 0.02
+IoU pole: 0.80
+IoU traffic light: 0.30
+IoU traffic sign: 1.07
+IoU vegetation: 6.03
+IoU terrain: 0.00
+IoU sky: 2.75
+IoU person: 0.00
+IoU rider: 0.00
+IoU car: 0.15
+IoU truck: 0.04
+IoU bus: 0.07
+IoU train: 0.02
+IoU motorcycle: 0.00
+IoU bicycle: 0.00
+
+epoch: 19 Mean IoU: 0.64

@@ -19,7 +19,7 @@ class Retrain_Autodeeplab(nn.Module):
         if args.net_arch is not None and args.cell_arch is not None:
             net_arch, cell_arch = np.load(args.net_arch), np.load(args.cell_arch)
             #add path to network_path
-            network_path = np.load('run/cityscapes/pippo/experiment_0/network_path_space.npy')
+            network_path = np.load(args.net_arch)
             network_arch = net_arch
 
         else:

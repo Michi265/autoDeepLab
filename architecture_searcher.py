@@ -75,6 +75,17 @@ class ArchitectureSearcher(object):
                 # self.model.load_state_dict(new_state_dict)
                 copy_state_dict(self.model.state_dict(), new_state_dict)
 
+            else:
+                # self.model.load_state_dict(checkpoint['state_dict'])
+                copy_state_dict(self.model.state_dict(), checkpoint['state_dict'])
+
+            if not args.ft:
+                # self.optimizer.load_state_dict(checkpoint['optimizer'])
+                copy_state_dict(self.optimizer.state_dict(), checkpoint['optimizer'])
+            self.best_pred = checkpoint['best_pred']
+            print("=> loaded checkpoint '{}' (epoch {})"
+                  .format(args.resume, checkpoint['epoch']))
+
         if args.resume is not None:
             self.best_pred = checkpoint['best_pred']
             print("=> loaded checkpoint '{}' (epoch {})"
@@ -86,6 +97,7 @@ class ArchitectureSearcher(object):
 
     def training(self, epoch):
         train_loss = 0.0
+        self.model.train()
         tbar = tqdm(self.train_loaderA)
         num_img_tr = len(self.train_loaderA)
 
@@ -136,8 +148,8 @@ class ArchitectureSearcher(object):
             if i % (num_img_tr // 10) == 0:
                 global_step = i + num_img_tr * epoch
 
-            print('[Epoch: %d, numImages: %5d]' % (epoch, i * self.args.batch_size + image.data.shape[0]))
-            print('Loss: %.3f' % train_loss)
+        print('[Epoch: %d, numImages: %5d]' % (epoch, i * self.args.batch_size + image.data.shape[0]))
+        print('Loss: %.3f' % train_loss)
 
     def validation(self, epoch):
         self.model.eval()
@@ -184,5 +196,3 @@ class ArchitectureSearcher(object):
                 'optimizer': self.optimizer.state_dict(),
                 'best_pred': self.best_pred,
             }, is_best)
-
-

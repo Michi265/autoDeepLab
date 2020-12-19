@@ -5,5 +5,5 @@ lr:0.025
 lr_scheduler:cos
 loss_type:ce
 epoch:40
-base_size:320
-crop_size:321
+base_size:256
+crop_size:257
